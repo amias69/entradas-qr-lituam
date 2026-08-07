@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+jinja2
+pillow
+qrcode
+reportlab
+pwdlib[argon2]
+python-multipart
+itsdangerous

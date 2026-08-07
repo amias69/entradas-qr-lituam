@@ -1,0 +1,43 @@
+:root {
+    /* Fondo y superficies */
+    --color-bg: #1F1B18;
+    --color-surface: #2C2622;
+    --color-surface-soft: #352E29;
+
+    /* Dorados */
+    --color-accent: #C9A55A;
+    --color-accent-hover: #D7B56A;
+    --color-accent-soft: #E3C98B;
+
+    /* Texto */
+    --color-text: #F5F2EC;
+    --color-text-muted: #B8B2A8;
+    --color-text-dark: #1F1B18;
+
+    /* Bordes */
+    --color-border: #4A4139;
+
+    /* Estados */
+    --color-success: #4CAF50;
+    --color-warning: #F2A93B;
+    --color-danger: #D9534F;
+
+    /* Sombras */
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+    /* Radios */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    /* Espaciado */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+
+    /* Transiciones */
+    --transition-fast: 160ms ease;
+    --transition-normal: 240ms ease;
+}

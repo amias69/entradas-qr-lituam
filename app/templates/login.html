@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Iniciar sesión</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/theme.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/styles.css"
+    >
+</head>
+
+<body>
+
+    <main>
+
+        <h1>Entradas QR</h1>
+
+        <form
+            action="/login"
+            method="post"
+        >
+
+            <label>
+                Usuario
+
+                <input
+                    type="text"
+                    name="username"
+                    required
+                    autocomplete="username"
+                >
+            </label>
+
+            <label>
+                Contraseña
+
+                <input
+                    type="password"
+                    name="password"
+                    required
+                    autocomplete="current-password"
+                >
+            </label>
+
+            {% if error %}
+                <p>{{ error }}</p>
+            {% endif %}
+
+            <button type="submit">
+                Iniciar sesión
+            </button>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
