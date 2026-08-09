@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
 
@@ -9,7 +8,12 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Iniciar sesión</title>
+    <title>Entradas QR · Iniciar sesión</title>
+    <link
+        rel="icon"
+        href="/static/favicon.ico"
+        type="image/x-icon"
+    >
 
     <link
         rel="stylesheet"
@@ -22,51 +26,95 @@
     >
 </head>
 
-<body>
+<body class="login-page">
 
-    <main>
+    <main class="login-container">
 
-        <h1>Entradas QR</h1>
+        <section class="login-card">
 
-        <form
-            action="/login"
-            method="post"
-        >
+            <header class="login-header">
+                <div class="login-logo">
+                    <img
+                        src="/static/img/logo.png"
+                        alt="Lituam Perú"
+                    >
+                </div>
 
-            <label>
-                Usuario
+                <p class="login-eyebrow">
+                    Gestión de entradas
+                </p>
 
-                <input
-                    type="text"
-                    name="username"
-                    required
-                    autocomplete="username"
+                <div class="brand-stack">
+                    <div class="brand-legado brand-legado-gold">
+                        LEGADO
+                    </div>
+
+                    <div class="brand-legado brand-legado-white">
+                        X ANIVERSARIO
+                    </div>
+                </div>
+
+                <p class="login-description">
+                    Inicia sesión para continuar.
+                </p>
+            </header>
+
+            <form
+                class="login-form"
+                action="/login"
+                method="post"
+            >
+
+                <div class="form-group">
+                    <label for="username">
+                        Usuario
+                    </label>
+
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        autocomplete="username"
+                        required
+                        autofocus
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                {% if error %}
+                    <p
+                        class="form-error"
+                        role="alert"
+                    >
+                        {{ error }}
+                    </p>
+                {% endif %}
+
+                <button
+                    class="button button-primary"
+                    type="submit"
                 >
-            </label>
+                    Iniciar sesión
+                </button>
 
-            <label>
-                Contraseña
+            </form>
 
-                <input
-                    type="password"
-                    name="password"
-                    required
-                    autocomplete="current-password"
-                >
-            </label>
-
-            {% if error %}
-                <p>{{ error }}</p>
-            {% endif %}
-
-            <button type="submit">
-                Iniciar sesión
-            </button>
-
-        </form>
+        </section>
 
     </main>
 
 </body>
-
 </html>

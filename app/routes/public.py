@@ -6,7 +6,6 @@ from fastapi.responses import StreamingResponse
 from app.services.entrada_service import buscar_por_token
 from app.services.imagen_service import generar_imagen_entrada
 from app.services.pdf_service import generar_pdf_entrada
-from app.services.pdf_service import generar_pdf_entrada
 
 router = APIRouter(
     tags=["publico"],
@@ -30,17 +29,13 @@ def ver_entrada(request: Request, token: str):
             detail="Entrada no encontrada",
         )
 
-    if entrada["estado"] == "ANULADA":
-        raise HTTPException(
-            status_code=404,
-            detail="Entrada no disponible",
-        )
-
     return templates.TemplateResponse(
         request=request,
         name="entrada_publica.html",
         context={
             "token": token,
+            "nombre": entrada["nombre"],
+            "estado": entrada["estado"],
         },
     )
 
@@ -75,43 +70,6 @@ def obtener_imagen(token: str):
     return StreamingResponse(
         buffer,
         media_type="image/jpeg",
-    )
-
-@router.get("/e/{token}/pdf")
-def descargar_pdf(token: str):
-    entrada = buscar_por_token(token)
-
-    if entrada is None:
-        raise HTTPException(
-            status_code=404,
-            detail="Entrada no encontrada",
-        )
-
-    if entrada["estado"] == "ANULADA":
-        raise HTTPException(
-            status_code=404,
-            detail="Entrada no disponible",
-        )
-
-    imagen = generar_imagen_entrada(token)
-    pdf = generar_pdf_entrada(imagen)
-
-    return StreamingResponse(
-        pdf,
-        media_type="application/pdf",
-        headers={
-            "Content-Disposition":
-                f'attachment; filename="entrada-{token}.pdf"'
-        },
-    )
-
-    return StreamingResponse(
-        buffer,
-        media_type="image/jpeg",
-        headers={
-            "Content-Disposition":
-                f'attachment; filename="entrada-{token}.jpeg"'
-        },
     )
 
 @router.get("/e/{token}/pdf")

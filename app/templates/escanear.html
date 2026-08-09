@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Control de acceso | Entradas QR</title>
+    <link
+        rel="icon"
+        href="/static/favicon.ico"
+        type="image/x-icon"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/theme.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/styles.css"
+    >
+</head>
+
+<body>
+
+    <main class="app-shell">
+
+        <header class="page-header">
+
+            <a
+                class="back-link"
+                href="/"
+            >
+                ← Volver
+            </a>
+
+            <p class="app-eyebrow">
+                Entradas QR
+            </p>
+
+            <h1>
+                Control de acceso
+            </h1>
+
+            <p class="page-description">
+                Escanea una entrada para verificarla
+                antes de autorizar el ingreso.
+            </p>
+
+        </header>
+
+
+        <section class="card">
+
+            <button
+                id="iniciar-control"
+                class="button button-primary"
+                type="button"
+            >
+                Escanear entrada
+            </button>
+
+            <div
+                id="control-reader"
+                hidden
+            ></div>
+
+            <p
+                id="control-error"
+                class="form-error"
+                hidden
+            ></p>
+
+        </section>
+
+        <section class="card control-search-card">
+
+            <div class="control-search-header">
+                <h2>Buscar entrada</h2>
+
+                <p>
+                    Busca por nombre, teléfono o código
+                    si no puedes escanear el QR.
+                </p>
+            </div>
+
+            <form
+                id="form-buscar-control"
+                class="control-search-row"
+            >
+                <input
+                    id="buscar-control"
+                    class="search-input"
+                    type="search"
+                    placeholder="Nombre, teléfono o código"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="button button-primary"
+                    type="submit"
+                >
+                    Buscar
+                </button>
+            </form>
+
+            <div
+                id="resultados-busqueda-control"
+                class="results-list"
+                hidden
+            ></div>
+
+        </section>
+
+        <section
+            id="resultado-control"
+            class="card"
+            hidden
+        ></section>
+
+    </main>
+
+    <div
+        id="modal-validacion"
+        class="modal modal-validacion"
+        hidden
+    >
+        <div class="modal-backdrop"></div>
+
+        <section class="modal-card modal-validacion-card">
+            <div id="contenido-validacion"></div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="/static/js/control_acceso.js"></script>
+
+</body>
+
+</html>

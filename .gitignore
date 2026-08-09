@@ -1,49 +1,9 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-
-# Virtual environment
 .venv/
 
-# SQLite
-*.db
-*.sqlite3
+__pycache__/
+*.py[cod]
 
-# Variables de entorno
+data/*.db*
+data/*.db-*
+
 .env
-
-# VS Code
-.vscode/
-
-# JetBrains
-.idea/
-
-# macOS
-.DS_Store
-
-# Linux
-*~
-
-# Tests
-.pytest_cache/
-
-# Coverage
-.coverage
-htmlcov/
-
-# Build
-dist/
-build/
-
-# Archivos temporales
-*.log
-
-# PDF generados
-*.pdf
-
-# Imágenes generadas
-*.jpeg
-*.jpg
-*.png

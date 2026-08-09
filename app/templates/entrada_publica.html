@@ -1,33 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
 
-  <title>Entrada</title>
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Entrada | Entradas QR</title>
+    <link
+        rel="icon"
+        href="/static/favicon.ico"
+        type="image/x-icon"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/theme.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/styles.css"
+    >
 </head>
 
 <body>
 
-  <main>
-    <img
-      src="/e/{{ token }}/imagen"
-      alt="Entrada"
-    >
+    <main class="entrada-publica">
 
-    <div>
-      <a href="/e/{{ token }}/imagen" download>
-        Descargar imagen
-      </a>
+        <section class="entrada-publica-card">
 
-      <a href="/e/{{ token }}/pdf">
-        Descargar PDF
-      </a>
-    </div>
-  </main>
+            {% if estado != "ANULADA" %}
+            <div class="entrada-publica-imagen">
+                <img
+                    src="/e/{{ token }}/imagen"
+                    alt="Entrada de {{ nombre }}"
+                >
+            </div>
+            {% endif %}
+
+            <div class="entrada-publica-info">
+
+                <h1>
+                    {{ nombre }}
+                </h1>
+
+                <div
+                    class="
+                        estado-badge
+                        estado-{{ estado | lower }}
+                    "
+                >
+                    <span class="estado-dot"></span>
+
+                    {{ estado }}
+                </div>
+
+            </div>
+
+            {% if estado != "ANULADA" %}
+            <div class="entrada-publica-acciones">
+                <a
+                    class="button button-primary"
+                    href="/e/{{ token }}/imagen"
+                    download
+                >
+                    Descargar como imagen
+                </a>
+
+                <a
+                    class="button entrada-publica-button-secondary"
+                    href="/e/{{ token }}/pdf"
+                >
+                    Descargar como PDF
+                </a>
+            </div>
+            {% endif %}
+
+        </section>
+
+    </main>
 
 </body>
+
 </html>

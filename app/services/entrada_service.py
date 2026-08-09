@@ -86,8 +86,7 @@ def buscar_entradas(consulta):
             """
             SELECT *
             FROM entradas
-            WHERE estado != 'ANULADA'
-              AND (
+            WHERE (
                     token = ?
                  OR telefono = ?
                  OR nombre LIKE ?
@@ -257,12 +256,30 @@ def obtener_historial(entrada_id):
             SELECT
                 historial_entradas.accion,
                 historial_entradas.fecha,
-                usuarios.username
+                COALESCE(
+                    usuarios.username,
+                    'Usuario no disponible'
+                ) AS username
             FROM historial_entradas
-            JOIN usuarios
+            LEFT JOIN usuarios
                 ON usuarios.id = historial_entradas.usuario_id
             WHERE historial_entradas.entrada_id = ?
             ORDER BY historial_entradas.fecha ASC
             """,
             (entrada_id,),
         ).fetchall()
+
+def buscar_por_id(entrada_id):
+    with get_connection() as connection:
+        return connection.execute(
+            """
+            SELECT
+                entradas.*,
+                usuarios.username AS generado_por_username
+            FROM entradas
+            LEFT JOIN usuarios
+                ON usuarios.id = entradas.generado_por
+            WHERE entradas.id = ?
+            """,
+            (entrada_id,),
+        ).fetchone()

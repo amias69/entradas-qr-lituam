@@ -12,8 +12,9 @@ from app.services.entrada_service import (
     validar_entrada,
 )
 from app.services.pdf_service import generar_pdf_asistentes
-
+from app.services.entrada_service import obtener_historial
 from app.routes.auth import obtener_usuario_actual
+from app.services.entrada_service import buscar_por_id
 
 
 router = APIRouter(
@@ -43,6 +44,21 @@ def buscar(
     resultados = buscar_entradas(q)
 
     return [dict(entrada) for entrada in resultados]
+
+@router.get("/{entrada_id}")
+def obtener_entrada(
+    entrada_id: int,
+    usuario=Depends(obtener_usuario_actual),
+):
+    entrada = buscar_por_id(entrada_id)
+
+    if entrada is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Entrada no encontrada",
+        )
+
+    return dict(entrada)
 
 @router.put("/{entrada_id}")
 def editar(
@@ -124,3 +140,13 @@ def descargar_lista_asistentes(
                 'attachment; filename="lista-asistentes.pdf"'
         },
     )
+
+@router.get("/{entrada_id}/historial")
+def historial(
+    entrada_id: int,
+    usuario=Depends(obtener_usuario_actual),
+):
+    return [
+        dict(registro)
+        for registro in obtener_historial(entrada_id)
+    ]

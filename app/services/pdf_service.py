@@ -44,7 +44,7 @@ def generar_pdf_asistentes(asistentes):
                 asistente["telefono"] or "",
                 asistente["forma_pago"],
                 asistente["token"],
-                "☐",
+                "",
             ]
         )
 

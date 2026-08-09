@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Consultar entrada · Entradas QR</title>
+    <link
+        rel="icon"
+        href="/static/favicon.ico"
+        type="image/x-icon"
+    >
+
+    <link rel="stylesheet" href="/static/css/theme.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body class="app-page">
+
+    <main class="app-shell">
+
+        <header class="page-header">
+
+            <a
+                class="back-link"
+                href="/"
+            >
+                ← Volver
+            </a>
+
+            <p class="app-eyebrow">
+                Gestión de entradas
+            </p>
+
+            <h1>Consultar entrada</h1>
+
+            <p class="page-description">
+                Busca por nombre, teléfono o token.
+            </p>
+
+        </header>
+
+        <section class="card">
+
+            <div class="search-row">
+
+                <input
+                    id="buscar-entrada"
+                    class="search-input"
+                    type="search"
+                    placeholder="Nombre, teléfono o token"
+                    autocomplete="off"
+                >
+
+                <button
+                    id="buscar-button"
+                    class="button button-primary"
+                    type="button"
+                >
+                    Buscar
+                </button>
+
+                <button
+                    id="abrir-scanner"
+                    class="button button-ghost"
+                    type="button"
+                >
+                    Escanear QR
+                </button>
+
+            </div>
+
+            <div class="toolbar">
+
+                <a
+                    class="button button-ghost"
+                    href="/reporte"
+                >
+                    Ver reporte
+                </a>
+
+                <a
+                    class="button button-ghost"
+                    href="/api/entradas/asistentes/pdf"
+                >
+                    Descargar lista de asistentes
+                </a>
+
+            </div>
+
+        </section>
+
+        <section
+            id="resultados-busqueda"
+            class="results-list"
+        ></section>
+
+    </main>
+
+    <!-- ==========================
+     MODAL ADMINISTRAR
+     ========================== -->
+
+    <div
+        id="modal-administrar"
+        class="modal"
+        hidden
+    >
+        <div class="modal-backdrop"></div>
+
+        <section class="modal-card administrar-modal-card">
+
+            <header class="modal-header">
+
+                <div>
+                    <p class="app-eyebrow">
+                        Entrada
+                    </p>
+
+                    <h2>Administrar entrada</h2>
+                </div>
+
+                <button
+                    id="cerrar-modal-administrar"
+                    class="button button-ghost"
+                    type="button"
+                >
+                    Cerrar
+                </button>
+
+            </header>
+
+            <div id="contenido-administrar">
+                <p class="page-description">
+                    Aquí aparecerá la información de la entrada.
+                </p>
+            </div>
+
+        </section>
+    </div>
+
+
+    <!-- ==========================
+        MODAL SCANNER
+        ========================== -->
+
+    <div
+        id="scanner-modal"
+        class="modal"
+        hidden
+    >
+        <div class="modal-backdrop"></div>
+
+        <section class="modal-card">
+
+            <header class="modal-header">
+
+                <div>
+                    <p class="app-eyebrow">
+                        Cámara
+                    </p>
+
+                    <h2>Escanear QR</h2>
+                </div>
+
+                <button
+                    id="cerrar-scanner"
+                    class="button button-ghost"
+                    type="button"
+                >
+                    Cerrar
+                </button>
+
+            </header>
+
+            <div id="qr-reader"></div>
+
+            <p
+                id="scanner-error"
+                class="form-error"
+                hidden
+            ></p>
+
+        </section>
+    </div>
+
+
+    <script
+        src="https://unpkg.com/html5-qrcode"
+    ></script>
+
+    <script src="/static/js/scanner.js"></script>
+
+</body>
+</html>

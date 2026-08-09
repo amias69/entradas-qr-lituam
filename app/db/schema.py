@@ -14,7 +14,13 @@ CREATE TABLE IF NOT EXISTS entradas (
     nombre TEXT NOT NULL,
     telefono TEXT,
     forma_pago TEXT NOT NULL
-        CHECK (forma_pago IN ('YAPE / PLIN', 'EFECTIVO')),
+        CHECK (
+            forma_pago IN (
+                'YAPE / PLIN',
+                'EFECTIVO',
+                'CORTESÍA'
+            )
+        ),
     generado_por INTEGER NOT NULL,
     estado TEXT NOT NULL DEFAULT 'ACTIVA'
         CHECK (estado IN ('ACTIVA', 'USADA', 'ANULADA')),

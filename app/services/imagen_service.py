@@ -6,11 +6,11 @@ from app.services.qr_service import generar_qr
 
 
 BASE_DIR = Path(__file__).resolve().parents[2]
-PLANTILLA_PATH = BASE_DIR / "app" / "assets" / "entrada.jpeg"
+PLANTILLA_PATH = BASE_DIR / "app" / "assets" / "entrada.png"
 
-QR_X = 950
-QR_Y = 310
-QR_SIZE = 150
+QR_X = 365
+QR_Y = 755
+QR_SIZE = 265
 
 
 def generar_imagen_entrada(token):

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Entradas QR</title>
+    <link
+        rel="icon"
+        href="/static/favicon.ico"
+        type="image/x-icon"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/theme.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/styles.css"
+    >
+</head>
+
+<body class="app-page">
+
+    <main class="app-shell">
+
+        <header class="app-header">
+            <div>
+                <p class="app-eyebrow">
+                    Gestión de entradas
+                </p>
+
+                <div class="brand-stack">
+                    <div class="brand-legado brand-legado-gold">
+                        LEGADO
+                    </div>
+
+                    <div class="brand-legado brand-legado-white">
+                        X ANIVERSARIO
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-user">
+                <div class="user-badge">
+                    <span class="user-badge-dot"></span>
+                    {{ usuario.username }}
+                </div>
+
+                <form
+                    action="/logout"
+                    method="post"
+                >
+                    <button
+                        class="button button-ghost"
+                        type="submit"
+                    >
+                        Cerrar sesión
+                    </button>
+                </form>
+            </div>
+        </header>
+
+        <section class="menu-grid">
+
+            <a
+                class="menu-card"
+                href="/generar"
+            >
+                <span class="menu-card-title">
+                    Generar entrada
+                </span>
+
+                <span class="menu-card-description">
+                    Registrar una nueva entrada y generar su enlace.
+                </span>
+            </a>
+
+            <a
+                class="menu-card"
+                href="/consultar"
+            >
+                <span class="menu-card-title">
+                    Consultar entrada
+                </span>
+
+                <span class="menu-card-description">
+                    Buscar, editar, anular o recuperar una entrada.
+                </span>
+            </a>
+
+            <a
+                class="menu-card"
+                href="/control-acceso"
+            >
+                <span class="menu-card-title">
+                    Control de acceso
+                </span>
+
+                <span class="menu-card-description">
+                    Escanear entradas y validar el ingreso.
+                </span>
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -18,6 +18,7 @@ FORMAS_PAGO = (
     PAGO_EFECTIVO,
 )
 
+PRECIO_ENTRADA = 60
 
 # ==========================
 # ESTADOS DE ENTRADA
