@@ -26,13 +26,18 @@ app = FastAPI()
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
+COOKIE_SECURE = (
+    os.environ.get("COOKIE_SECURE", "false").lower()
+    == "true"
+)
+
 app.add_middleware(
     SessionMiddleware,
     secret_key=SECRET_KEY,
     session_cookie="entradas_session",
     max_age=60 * 60 * 12,
     same_site="lax",
-    https_only=False,
+    https_only=COOKIE_SECURE,
 )
 
 app.include_router(auth_router)
