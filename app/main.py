@@ -24,10 +24,7 @@ from starlette.exceptions import (
 
 app = FastAPI()
 
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY",
-    "clave-desarrollo-cambiar-en-produccion",
-)
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 app.add_middleware(
     SessionMiddleware,
