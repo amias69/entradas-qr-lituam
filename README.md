@@ -1,6 +1,6 @@
 # Entradas QR
 
-Sistema web para la gestión de entradas mediante códigos QR.
+Sistema web para la gestión de entradas QR para LITUAM perú.
 
 ## Tecnologías
 
