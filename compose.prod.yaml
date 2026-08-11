@@ -1,0 +1,8 @@
+services:
+  entradas-qr-lituam:
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
