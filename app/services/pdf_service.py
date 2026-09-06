@@ -1,8 +1,8 @@
 from io import BytesIO
 
 from reportlab.lib import colors
-from reportlab.lib.pagesizes import A4
-from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4, landscape
+from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 
 
@@ -24,7 +24,11 @@ def generar_pdf_asistentes(asistentes):
 
     documento = SimpleDocTemplate(
         buffer,
-        pagesize=A4,
+        pagesize=landscape(A4),
+        leftMargin=8 * mm,
+        rightMargin=8 * mm,
+        topMargin=8 * mm,
+        bottomMargin=8 * mm,
     )
 
     datos = [
@@ -51,6 +55,13 @@ def generar_pdf_asistentes(asistentes):
     tabla = Table(
         datos,
         repeatRows=1,
+        colWidths=[
+            90 * mm,  # Nombre
+            30 * mm,  # Teléfono
+            35 * mm,  # Forma de pago
+            65 * mm,  # Token
+            45 * mm,  # Control
+        ],
     )
 
     tabla.setStyle(
